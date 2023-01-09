@@ -1,13 +1,13 @@
-import Nickname from "./components/Nickname";
-import Header from "./components/Header";
+import { BrowserRouter as Router } from "react-router-dom";
+import MainRoutes from "./components/MainRoutes";
+
 function App() {
   return (
-    <>
-      <Header />
-      <div className="container">
-        <Nickname />
+    <Router>
+      <div>
+        <MainRoutes />
       </div>
-    </>
+    </Router>
   );
 }
 
