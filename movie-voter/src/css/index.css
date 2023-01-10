@@ -55,8 +55,150 @@ div {
   border-radius: 5px;
 }
 
+.form-float {
+  display: flex;
+}
+
 .btn {
   color: white;
   background-color: green;
   border: none;
+}
+
+.btn-block {
+  color: white;
+  background-color: green;
+  border: none;
+  width: 50%;
+  height: 40px;
+  margin: 5px;
+  padding: 3px 7px;
+  font-size: 17px;
+  border-radius: 5px;
+}
+
+.pfull-0 {
+  padding: 0%;
+}
+.pfull-1 {
+  padding: 10%;
+}
+.pfull-2 {
+  padding: 20%;
+}
+.pfull-3 {
+  padding: 30%;
+}
+.pfull-4 {
+  padding: 40%;
+}
+.pfull-5 {
+  padding: 50%;
+}
+
+.pt-0 {
+  padding-top: 0%;
+}
+.pt-1 {
+  padding-top: 10%;
+}
+.pt-2 {
+  padding-top: 20%;
+}
+.pt-3 {
+  padding-top: 30%;
+}
+.pt-4 {
+  padding-top: 40%;
+}
+.pt-5 {
+  padding-top: 50%;
+}
+
+.pb-0 {
+  padding-bottom: 0%;
+}
+.pb-1 {
+  padding-bottom: 10%;
+}
+.pb-2 {
+  padding-bottom: 20%;
+}
+.pb-3 {
+  padding-bottom: 30%;
+}
+.pb-4 {
+  padding-bottom: 40%;
+}
+.pb-5 {
+  padding-bottom: 50%;
+}
+
+.mfull-0 {
+  margin: 0%;
+}
+
+.mfull-1 {
+  margin: 10%;
+}
+
+.mfull-2 {
+  margin: 20%;
+}
+.mfull-3 {
+  margin: 30%;
+}
+
+.mfull-4 {
+  margin: 40%;
+}
+
+.mfull-5 {
+  margin: 50%;
+}
+
+.mt-0 {
+  margin-top: 0%;
+}
+
+.mt-1 {
+  margin-top: 10%;
+}
+
+.mt-2 {
+  margin-top: 20%;
+}
+.mt-3 {
+  margin-top: 30%;
+}
+
+.mt-4 {
+  margin-top: 40%;
+}
+
+.mt-5 {
+  margin-top: 50%;
+}
+
+.mb-0 {
+  margin-bottom: 0%;
+}
+
+.mb-1 {
+  margin-bottom: 10%;
+}
+
+.mb-2 {
+  margin-bottom: 20%;
+}
+.mb-3 {
+  margin-bottom: 30%;
+}
+
+.mb-4 {
+  margin-bottom: 40%;
+}
+
+.mb-5 {
+  margin-bottom: 50%;
 }

@@ -1,9 +1,6 @@
 import Nickname from "./Nickname";
-import { useState } from "react";
 
-const MainPage = () => {
-  const [nickname, setNickname] = useState("");
-
+const MainPage = ({ nickname, setNickname }) => {
   return (
     <div>
       <h1 className="title header">Movie Poll</h1>

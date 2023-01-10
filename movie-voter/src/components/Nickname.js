@@ -1,4 +1,8 @@
+import { useNavigate } from "react-router-dom";
+
 const Nickname = ({ onPickNickname, nickname }) => {
+  const navigate = useNavigate();
+
   const onSubmit = (e) => {
     e.preventDefault();
 
@@ -8,6 +12,7 @@ const Nickname = ({ onPickNickname, nickname }) => {
       return;
     }
     console.log("Hello", nickname, "!");
+    navigate("/rooms");
   };
 
   return (
