@@ -1,15 +1,14 @@
 import React from "react";
-import { useEffect, useState } from "react";
+import { useEffect, useRef } from "react";
 import { useLocation } from "react-router-dom";
-//import { useNavigate } from "react-router-dom";
 const io = require("socket.io-client");
 
-const socket = io("http://localhost:5000");
 const Room = () => {
   const { state } = useLocation();
-  const [participants, setParticipants] = useState([]); // const navigate = useNavigate();
+  const participants = useRef([]);
 
   useEffect(() => {
+    const socket = io("http://localhost:5000");
     socket.on("connect", () => {
       console.log("CONNECTED: ", socket.id, "\n", JSON.stringify({ ...state }));
       socket.emit("join", state.roomID, state.nickname);
@@ -19,13 +18,19 @@ const Room = () => {
       console.log("DISCONNECTED: ", socket.id);
     });
 
-    socket.on("newUser", (userNickname) => {
-      console.log(userNickname, "joined the room.");
-      setParticipants([...participants, userNickname]);
+    socket.on("newUser", (nickname) => {
+      console.log(nickname, "has joined the room.");
+      participants.current = [...participants.current, nickname];
       console.log(participants);
     });
 
-    return () => socket.disconnect();
+    return () => {
+      socket.off("connect");
+      socket.off("disconnect");
+      socket.off("pong");
+      socket.disconnect();
+    };
+    // eslint-disable-next-line
   }, []);
 
   return (
