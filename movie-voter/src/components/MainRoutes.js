@@ -8,7 +8,7 @@ const Main = ({ nickname, setNickname }) => {
     <Routes>
       <Route exact path="/" element={<MainPage nickname={nickname} setNickname={setNickname} />}></Route>
       <Route exact path="/rooms" element={<RoomOverworld nickname={nickname} />}></Route>
-      <Route exact path="/newRoom" element={<Room nickname={nickname} />}></Route>
+      <Route exact path="/newRoom" element={<Room  />}></Route>
     </Routes>
   );
 };
