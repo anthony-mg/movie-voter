@@ -23,6 +23,11 @@ class RoomStore {
   findRoom(roomID) {
     return this.rooms.get(roomID);
   }
+
+  deleteRoom(roomID) {
+    console.log("DELETED ROOM ", roomID);
+    return this.rooms.delete(roomID);
+  }
 }
 
 module.exports = {

@@ -38,10 +38,13 @@ io.on("connection", (socket) => {
 
   socket.on("disconnecting", (reason) => {
     rooms.removeParticipant(roomID, nickname);
+    const room = rooms.findRoom(roomID);
     io.emit(
       "userDisconnect",
-      rooms.findRoom(roomID).map((participant) => participant.nickname)
+      room.map((participant) => participant.nickname)
     );
+
+    if (room.length == 0) rooms.deleteRoom(roomID);
   });
 
   socket.on("disconnect", (reason) => {

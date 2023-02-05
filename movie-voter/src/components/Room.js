@@ -25,7 +25,9 @@ const Room = () => {
         <h2>Participants</h2>
         <div>
           {participants.map((participant, index) => (
-            <li key={index}>{participant}</li>
+            <li className="list-none" key={index}>
+              {participant}
+            </li>
           ))}
         </div>
       </div>
