@@ -2,31 +2,26 @@ import { io } from "socket.io-client";
 
 export let socket;
 
-export function initSocketConnection(state, participants) {
-  socket = io("http://localhost:5000", { autoConnect: false });
+export function initSocketConnection(state, participants, setParticipants) {
+  socket = io("http://192.168.0.12:5000", { autoConnect: false });
 
   socket.auth = { nickname: state.nickname, roomID: state.roomID };
   socket.connect();
 
   //New user joined the room. Add to participants.
-  socket.on("newUser", (nickname) => {
-    console.log(nickname, "has joined the room.");
-    participants.current = [...participants.current, nickname];
+  socket.on("newUser", (currentParticipants) => {
+    setParticipants([...currentParticipants]);
   });
 
   //User left. Remove from participants
-  socket.on("userDisconnect", (nickname) => {
-    console.log(nickname, "left.");
-    participants.current = participants.current.splice(
-      participants.current.findIndex((name) => name === nickname),
-      1
-    );
-    console.log(participants.current);
+  socket.on("userDisconnect", (currentParticipants) => {
+    setParticipants(currentParticipants);
   });
+  return socket;
 }
 
 //useEffect cleanup function. Ensures only one connection is made even after re-renders
-export function disconnectSocket() {
+export function disconnectSocket(socket) {
   socket.off("connect");
   socket.off("disconnect");
   socket.off("pong");

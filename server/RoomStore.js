@@ -4,21 +4,20 @@ class RoomStore {
   }
 
   saveRoom(roomID, participants) {
-    console.log(roomID);
     this.rooms.set(roomID, participants);
+    console.log("SAVED ROOM:", roomID, "WITH PARTICIPANTS:", participants);
   }
 
   addNewParticipant(roomID, nickname, socketID) {
     const newParts = [...this.rooms.get(roomID), { nickname, socketID }];
-    this.rooms.set(roomID, newParts);
+    this.saveRoom(roomID, newParts);
   }
 
-  removeParticipant(roomID, partToRemove) {
-    let newParts = this.rooms.get(roomID);
-    newParts = newParts.filter((participant) => {
-      participant.nickname != partToRemove;
-    });
-    return this.saveRoom(roomID, newParts);
+  removeParticipant(roomID, participantToRemove) {
+    let currentParticipants = this.rooms.get(roomID);
+    let newParticipants = currentParticipants.filter((participant) => participant.nickname != participantToRemove);
+
+    return this.saveRoom(roomID, newParticipants);
   }
 
   findRoom(roomID) {

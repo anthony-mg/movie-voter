@@ -5,6 +5,9 @@
   font-family: "Open Sans", sans-serif;
 }
 
+li {
+  list-style-type: none;
+}
 body {
   background-color: #0d1117;
   color: #89898c;

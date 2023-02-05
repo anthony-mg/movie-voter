@@ -24,16 +24,24 @@ io.on("connection", (socket) => {
   socket.join(roomID);
 
   participants = rooms.findRoom(roomID);
+
   if (!participants) {
     rooms.saveRoom(roomID, [{ nickname: nickname, socketID: socket.id }]);
-    console.log(rooms.findRoom(roomID));
   } else {
     rooms.addNewParticipant(roomID, nickname, socket.id);
-    console.log(rooms.findRoom(roomID));
   }
+
+  io.emit(
+    "newUser",
+    rooms.findRoom(roomID).map((participant) => participant.nickname)
+  );
 
   socket.on("disconnecting", (reason) => {
     rooms.removeParticipant(roomID, nickname);
+    io.emit(
+      "userDisconnect",
+      rooms.findRoom(roomID).map((participant) => participant.nickname)
+    );
   });
 
   socket.on("disconnect", (reason) => {
