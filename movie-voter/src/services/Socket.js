@@ -1,12 +1,20 @@
+/*
+  SERVICE FOR MANAGING SOCKET EVENTS. 
+
+  ANTHONY MENARD-GILL 2023
+*/
+
 import { io } from "socket.io-client";
 
 export let socket;
 
+//Creates the connection and registers the events
 export function initSocketConnection(state, participants, setParticipants) {
-  let url = process.env.REACT_APP_SERVER_URL + ":5000"
+  let url = process.env.REACT_APP_SERVER_URL + ":5000";
 
   socket = io(url, { autoConnect: false });
 
+  //Set handshake data
   socket.auth = { nickname: state.nickname, roomID: state.roomID };
   socket.connect();
 
