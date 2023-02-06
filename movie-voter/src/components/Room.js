@@ -17,13 +17,13 @@ const Room = () => {
   }, []);
 
   return (
-    <>
-      <div className="container">
-        <h2>Movie Pool</h2>
+    <div className="grid h-screen place-items-center text-center gap-1">
+      <div className="bg-base-200 card w-1/2 h-80 p-6 m-x-10">
+        <h2 className="text-2xl">Movie Pool</h2>
       </div>
-      <div className="container">
-        <h2>Participants</h2>
-        <div>
+      <div className="bg-base-200 card w-96 h-60 p-6 m-0">
+        <h2 className="text-2xl">Participants</h2>
+        <div className=" grid grid-cols-3 text-left m-4">
           {participants.map((participant, index) => (
             <li className="list-none" key={index}>
               {participant}
@@ -31,7 +31,7 @@ const Room = () => {
           ))}
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

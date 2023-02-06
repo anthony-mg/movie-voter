@@ -1,14 +1,15 @@
 const express = require("express");
 const cors = require("cors");
 const app = express();
+require("dotenv").config();
 const httpServer = require("http").createServer(app);
-const PORT = 5000;
+const PORT = 5000 || process.env.SERVER_PORT;
 const { RoomStore } = require("./RoomStore.js");
 const rooms = new RoomStore();
 
 const io = require("socket.io")(httpServer, {
   cors: {
-    origins: ["http://192.168.0.12:3000"],
+    origins: [process.env.CLIENT_URL],
     methods: ["GET", "POST"],
   },
 });

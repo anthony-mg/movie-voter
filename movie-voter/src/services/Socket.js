@@ -3,7 +3,9 @@ import { io } from "socket.io-client";
 export let socket;
 
 export function initSocketConnection(state, participants, setParticipants) {
-  socket = io("http://192.168.0.12:5000", { autoConnect: false });
+  let url = process.env.REACT_APP_SERVER_URL + ":5000"
+
+  socket = io(url, { autoConnect: false });
 
   socket.auth = { nickname: state.nickname, roomID: state.roomID };
   socket.connect();

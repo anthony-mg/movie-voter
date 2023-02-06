@@ -2,15 +2,17 @@ import Nickname from "./Nickname";
 
 const MainPage = ({ nickname, setNickname }) => {
   return (
-    <div>
-      <h1 className="title header">Movie Poll</h1>
-      <div className="container">
-        <Nickname
-          onPickNickname={(nickname) => {
-            setNickname(nickname);
-          }}
-          nickname={nickname}
-        />
+    <div className="flex text-center h-screen">
+      <div className="m-auto">
+        <h1 className=" text-3xl m-3">Movie Poll</h1>
+        <div className="m-auto place-items-center">
+          <Nickname
+            onPickNickname={(nickname) => {
+              setNickname(nickname);
+            }}
+            nickname={nickname}
+          />
+        </div>
       </div>
     </div>
   );

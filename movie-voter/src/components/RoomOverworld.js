@@ -17,12 +17,13 @@ const RoomOverworld = ({ nickname }) => {
   };
 
   return (
-    <>
-      <div className="container pt-0">
-        <h2 className="header pt-0 mt-0 mb-1">🍿 Hello {nickname} 🍿</h2>
-        <form className="form-float" onSubmit={onJoinRoom}>
-          <div className="form-control">
+    <div className="flex h-screen">
+      <div className="m-auto text-center p bg-base-200 p-10 rounded-xl">
+        <h2 className="text-xl">🍿 Hello {nickname} 🍿</h2>
+        <form className="grid m-2 place-items-center" onSubmit={onJoinRoom}>
+          <div className="m-2">
             <input
+              className="bg-base-300 input w-full max-w-xs"
               type="text"
               placeholder="Room ID"
               onChange={(e) => {
@@ -30,12 +31,12 @@ const RoomOverworld = ({ nickname }) => {
               }}
             ></input>
           </div>
-          <div className="form-control">
-            <input type="submit" value="enter room" className="btn btn-block"></input>
+          <div className="m-2">
+            <input type="submit" value="enter room" className="btn btn-wide shadow-lg hover:"></input>
           </div>
         </form>
       </div>
-    </>
+    </div>
   );
 };
 
